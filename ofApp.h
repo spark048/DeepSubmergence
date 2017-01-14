@@ -1,6 +1,11 @@
 #pragma once
 
 #include "ofMain.h"
+#include "Octopus.h"
+#include "Ball.h"
+#include "Serpent.hpp"
+#include "Jellyfish.hpp"
+#include "PaperTexture.hpp"
 
 class ofApp : public ofBaseApp{
     
@@ -12,48 +17,10 @@ public:
     int minutes;
     int totalMillis;
     float noiseSeed;
-    ofImage backgroundImage;
     
-    //TEXTURE ----------------
-    vector <float> backX;
-    vector <float> backY;
-    vector  <float> stringColor;
-    vector <float> length;
-    int numStrings;
-    
-    //SCENE 1 ----------------
-    void drawHead(float x, float y, float size);
-    void drawTalis(float x, float y, float size);
-    void drawTentacles(float x,float y, float radius, float stepSize);
-    void blackout(float speed);
-    float locX1, locY1;
-    int numTentacles;
-    
-    //SCENE 2 ----------------------------
-    void drawStar(float x, float y, float size, float offset, int numParticles, int numLegs);
-    int numStars;
-    vector <float> locX2;
-    vector <float> locY2;
-    vector <float> size;
-    vector <float> offset;
-    vector <int> numParticles;
-    vector <int> numLegs;
-    
-    //SCENE 3 ----------------------------
-    void drawRing(float x,float y, float radius, float stepSize);
-    void drawCore(float x,float y, float radius, float stepSize);
-    void drawDot(float x,float y, float radius);
-    float locX3, locY3;
-    int totalRays;
-    vector <float> noiseSeeds3;
-    
-    //SCENE 4 -----------------------------
-    void drawBrunch(float length);
-    void drawSkin(float x,float y, float radius, float stepSize);
-    void drawNeedles(float x,float y, float radius);
-    void drawHeart(float x,float y, float radius);
-    void drawFlash(float x,float y, float radius);
-    float locX4, locY4;
-    int resolution;
-    vector <float> noiseSeeds4;
+    Octopus octopus;
+    Ball ball;
+    Serpent serpent;
+    Jellyfish jellyfish;
+    PaperTexture blackout;
 };

@@ -1,10 +1,3 @@
-////////////////////////////
-/////Project Name: Deep Submergence
-/////08.01.2017
-/////Written by Soon Park
-/////soonpart@gmail.com
-////////////////////////////
-
 #pragma once
 
 #include "ofMain.h"
@@ -19,8 +12,16 @@ public:
     int minutes;
     int totalMillis;
     float noiseSeed;
+    ofImage backgroundImage;
     
-    //SCENE 1 ----------------------------
+    //TEXTURE ----------------
+    vector <float> backX;
+    vector <float> backY;
+    vector  <float> stringColor;
+    vector <float> length;
+    int numStrings;
+    
+    //SCENE 1 ----------------
     void drawHead(float x, float y, float size);
     void drawTalis(float x, float y, float size);
     void drawTentacles(float x,float y, float radius, float stepSize);
@@ -46,7 +47,7 @@ public:
     int totalRays;
     vector <float> noiseSeeds3;
     
-    //SCENE 4 ----------------------------
+    //SCENE 4 -----------------------------
     void drawBrunch(float length);
     void drawSkin(float x,float y, float radius, float stepSize);
     void drawNeedles(float x,float y, float radius);

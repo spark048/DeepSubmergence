@@ -1,10 +1,3 @@
-////////////////////////////
-/////Project Name: Deep Submergence
-/////08.01.2017
-/////Written by Soon Park
-/////soonpart@gmail.com
-////////////////////////////
-
 #include "ofMain.h"
 #include "ofApp.h"
 

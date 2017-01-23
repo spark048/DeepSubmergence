@@ -8,7 +8,7 @@ Jellyfish::Jellyfish()
 
 void Jellyfish::drawBrunch(float length, float angle, float time)
 {
-    ofSetColor(0, 50);
+    ofSetColor(255, 255, 240);
     ofDrawLine(0, 0, 0, -length);
     if(length > (30 + 10 * ofNoise(time*10))/8)
     {
@@ -32,7 +32,28 @@ void Jellyfish::drawSkin(float x,float y, float radius, float stepSize, float an
     float angleStep = 360.0/resolution;
     ofPushMatrix();
     ofTranslate(x, y);
-    ofSetColor(0, 50);
+    ofSetColor(0, 50 * ofNoise(time*100));
+    ofFill();
+    ofBeginShape();
+    for (int i=0; i<resolution; i++)
+    {
+        float noisedRadius = radius + ofNoise(noiseSeeds[i]) * stepSize;
+        float endX = sin(ofDegToRad(i*angleStep)) * noisedRadius;
+        float endY = cos(ofDegToRad(i*angleStep)) * noisedRadius;
+        noiseSeeds[i] += 0.01;
+        ofVertex(endX, endY);
+    }
+    ofEndShape(true);
+    ofPopMatrix();
+}
+
+//--------------------------------------------------------------
+void Jellyfish::drawInnerSkin(float x,float y, float radius, float stepSize, float angle, float time)
+{
+    float angleStep = 360.0/resolution;
+    ofPushMatrix();
+    ofTranslate(x, y);
+    ofSetColor(255, 255, 240);
     ofNoFill();
     ofBeginShape();
     for (int i=0; i<resolution; i++)
@@ -101,14 +122,16 @@ void Jellyfish::display(float angle, float time)
 {
     locX = ofMap(ofNoise(time*10 + 777), 0, 1, 0, ofGetWidth(), true);   //jiggle horizontally
     locY = ofMap(time, 0.75, 1, ofGetHeight() + 400, - 500, true); //move from bottom to top
+    ofPushMatrix();
     ofTranslate(locX, locY);
     ofRotate(angle * 0.1);
-    drawSkin(0, 0, 170, 20, angle, time);    //draw inner skin
     drawSkin(0, 0, 200 + 20 * -sin(ofDegToRad(angle)), 60, angle, time);  //draw outer double skin
     ofPushMatrix();
     ofRotate(-angle);
     drawSkin(0, 0, 200 + 20 * -sin(ofDegToRad(angle)), 60, angle, time);  //draw outer double skin
     ofPopMatrix();
+    drawSkin(0, 0, 170, 20, angle, time);    //draw inner body
+    drawInnerSkin(0, 0, 170, 20, angle, time);    //draw inner skin
     drawNeedles(0, 0, 270 - 20 * sin(ofDegToRad(angle)), angle, time);
     for(int i=0; i<5;i++)
     {
@@ -122,4 +145,5 @@ void Jellyfish::display(float angle, float time)
         drawHeart(0, 0, 20*i, angle, time);  //draw five red dot on each line
     }
     drawFlash(0, 0, 170, angle, time);
+    ofPopMatrix();
 }

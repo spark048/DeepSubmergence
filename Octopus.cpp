@@ -12,7 +12,7 @@ void Octopus::drawHead(float x, float y, float size, float angle, float time)
 {
     ofSetColor(ofMap(locY, 0, ofGetHeight(), 0, 100, true), ofMap(locX, 0, ofGetWidth(), 0, 40, true));
     ofNoFill();
-    ofDrawCircle(x, y, size + size * 0.3 * sin(ofDegToRad(angle)));
+    ofDrawCircle(x, y, size + size * 0.3 * sin(ofDegToRad(angle*1.3)));
 }
 
 //--------------------------------------------------------------
@@ -51,11 +51,11 @@ void Octopus::drawTentacles(float x, float y, float radius, float stepSize, floa
 
 void Octopus::display(float angle, float time)
 {
-    {
-        locX = ofMap(time, 0, 0.24, 0, ofGetWidth() + 200, true);
-        locY = ofMap(ofNoise(time*20 + 777), 0, 1, 0, ofGetHeight(), true);
-        drawHead(locX, locY, 60, angle, time);
-        drawTalis(locX, locY, 4, angle, time);
-        drawTentacles(locX - 800, 0, 180, 40, angle, time);
-    }
+    locX = ofMap(time, 0, 0.24, 0, ofGetWidth() + 200, true);
+    locY = ofMap(ofNoise(time*20 + 777), 0, 1, 0, ofGetHeight(), true);
+    ofPushMatrix();
+    drawHead(locX, locY, 60, angle, time);
+    drawTalis(locX, locY, 4, angle, time);
+    drawTentacles(locX - 800, 0, 180, 40, angle, time);
+    ofPopMatrix();
 }

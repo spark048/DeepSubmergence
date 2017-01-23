@@ -6,6 +6,8 @@
 #include "Serpent.hpp"
 #include "Jellyfish.hpp"
 #include "PaperTexture.hpp"
+#include "Plate.hpp"
+#include "ofxTrueTypeFontUC.h"
 
 class ofApp : public ofBaseApp{
     
@@ -13,6 +15,7 @@ public:
     void setup();
     void update();
     void draw();
+    
     float time, angle;
     int minutes;
     int totalMillis;
@@ -23,4 +26,7 @@ public:
     Serpent serpent;
     Jellyfish jellyfish;
     PaperTexture blackout;
+    Plate plate;
+    ofxTrueTypeFontUC fontL;
+    ofxTrueTypeFontUC fontS;
 };

@@ -19,6 +19,12 @@ void PaperTexture::display(float fadeoutSpeed)
     ofSetColor(255, 255, 240, fadeoutSpeed);
     ofFill();
     ofDrawRectangle(0, 0, ofGetWindowWidth(), ofGetHeight());
+    
+    //draw plate
+    plate.draw(ofGetWidth()/30, ofGetHeight()*28/30 - 300, 80, 300);
+    ofSetColor(255, 255, 240);
+    
+    
     for (int i = 0; i<numStrings; i++)
     {
         ofSetColor(stringColor[i], stringColor[i], stringColor[i]-15, fadeoutSpeed);

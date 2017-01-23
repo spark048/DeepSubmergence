@@ -5,7 +5,7 @@ void ofApp::setup()
 {
     ofSetCircleResolution(60);
     ofSetBackgroundAuto(false);
-
+    
     time = 0;
     angle = 0;
     minutes = 3;

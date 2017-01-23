@@ -9,6 +9,7 @@ public:
     
     void drawBrunch(float length, float angle, float time);
     void drawSkin(float x,float y, float radius, float stepSize, float angle, float time);
+    void drawInnerSkin(float x,float y, float radius, float stepSize, float angle, float time);
     void drawNeedles(float x,float y, float radius, float angle, float time);
     void drawHeart(float x,float y, float radius, float angle, float time);
     void drawFlash(float x,float y, float radius, float angle, float time);

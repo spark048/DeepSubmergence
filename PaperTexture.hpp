@@ -1,5 +1,6 @@
 #pragma once
 #include "ofMain.h"
+#include "Plate.hpp"
 
 class PaperTexture
 {
@@ -14,4 +15,6 @@ public:
     vector <float> length;
     int numStrings;
     ofImage backgroundImage;
+    
+    Plate plate;
 };
